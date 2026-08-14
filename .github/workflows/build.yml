@@ -1,0 +1,28 @@
+name: Compile APK
+
+on:
+  push:
+    branches: [ main, master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch: 
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
+        with:
+          command: buildozer android debug
+          buildozer_version: master
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: ${{ steps.buildozer.outputs.filename }}
