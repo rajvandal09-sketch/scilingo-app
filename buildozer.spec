@@ -1,17 +1,17 @@
-[app] 
-android.accept_sdk_license = True
-requirements = python3,kivy
-android.archs = arm64-v8a
-android.accept_sdk_license = True
+[app]
+
 # (str) Title of your application
 title = Scilingo
+
 # (str) Package name
 package.name = scilingo
+
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.parsifal
 
 # (str) Source code where the main.py lives
 source.dir = .
+
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas
 
@@ -25,7 +25,11 @@ requirements = python3,kivy
 orientation = portrait
 
 # (list) The Android archs to build for
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
+
+# Automatically accept Android SDK licenses for automated builds
+android.accept_sdk_license = True
+
 android.allow_backup = True
 
 [buildozer]
